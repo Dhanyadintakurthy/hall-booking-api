@@ -28,14 +28,14 @@ app.get("/", function (req, res) {
 
   app.get("/getAllRooms", function (req, res) {
     res.json({
-        output: rooms
+        rooms
     });
 
 });
 
 app.get("/getAllBookings", function (req, res) {
     res.json({
-        output: bookings
+        bookings
     });
 
 });
