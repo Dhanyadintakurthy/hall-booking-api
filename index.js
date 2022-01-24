@@ -12,7 +12,55 @@ const port = process.env.PORT;
 
 app.listen(port, () => console.log(`Your app is running with ${port}`));
 
-let rooms = [];
+let rooms = {
+    "output": [
+        {
+            "id": "jfzwgw8kysoufca",
+            "roomNo": 100,
+            "bookings": [],
+            "noSeats": 3,
+            "amenities": [
+                "AC",
+                "Geyser"
+            ],
+            "price": 90
+        },
+        {
+            "id": "jfzwgw8kysp352o",
+            "roomNo": 101,
+            "bookings": [],
+            "noSeats": 2,
+            "amenities": [
+                "Geyser"
+            ],
+            "price": 70
+        },
+        {
+            "id": "jfzwgw8kysphil0",
+            "roomNo": 102,
+            "bookings": [],
+            "noSeats": 2,
+            "amenities": [],
+            "price": 50
+        },
+        {
+            "id": "jfzwgw8kyspivac",
+            "roomNo": 103,
+            "bookings": [],
+            "noSeats": 2,
+            "amenities": [],
+            "price": 50
+        },
+        {
+            "id": "jfzwgw8kyspjt89",
+            "roomNo": 104,
+            "bookings": [],
+            "noSeats": 2,
+            "amenities": [],
+            "price": 50
+        }
+    ]
+};
 let roomNo = 100;
 let bookings =[];
 let date_regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
@@ -27,9 +75,9 @@ app.get("/", function (req, res) {
   });
 
   app.get("/getAllRooms", function (req, res) {
-    res.json({
+    res.json(
         rooms
-    });
+    );
 
 });
 
@@ -50,7 +98,7 @@ app.post("/createRoom", function (req, res) {
     if(req.body.price){room.price = req.body.price} else{res.status(400).json({ output: 'Please specify price per hour for Room'})};
     rooms.push(room);
     roomNo++;
-    res.status(200).json({ output: 'Room Created Successfully'}) 
+    res.status(200).json(room) 
 });
 
 app.post("/createBooking", function (req, res) {
